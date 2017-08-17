@@ -32,13 +32,15 @@ export default {
     return {
       loading: true,
       cat: [],
-      posts: []
+      posts: [],
+      comments: []
     }
   },
   created() {
 		axios.get('http://sharadshinde.in/client/wp-json/wp/v2/categories/'+this.$route.params.id)
 		.then((response) => {
             this.cat = response.data;
+            // Get Posts By Category
             axios.get('http://sharadshinde.in/client/wp-json/wp/v2/posts?categories='+this.$route.params.id)
             .then((response) => {
                 this.posts = response.data;
@@ -46,6 +48,7 @@ export default {
             .catch((error) => {
                 console.log(error);
             });
+            // END Posts By Category
 			this.loading = false;
 		})
 		.catch((error) => {

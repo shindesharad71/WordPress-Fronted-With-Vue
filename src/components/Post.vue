@@ -14,6 +14,9 @@
             <b>{{ cat.name }}</b></router-link> On <b>{{ post.date }}</b></p>
           </div>
           <p v-html="post.content.rendered"></p>
+          <div class="container">
+            <p for="comment in comments"></p>
+          </div>
         </article>		
 			</div>
 		</div>
