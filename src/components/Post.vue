@@ -1,6 +1,6 @@
 <template>
 	<div>
-    	<div class="container">
+    <div class="container">
 			<div class="loader text-center" v-show="loading">
 				<h3><i class="fa fa-3x fa-spinner fa-spin"></i> Loading...</h3>
 			</div>
@@ -10,7 +10,9 @@
         <article>
           <img :src="imgData.guid.rendered" class="img-fluid post-image" :alt="post.title.rendered">
           <h1 v-html="post.title.rendered"></h1>
-          <div><p>Posted By <router-link :to="{name: 'user', params: {id: author.id}}" tag="a"><b>{{ author.name }}</b></router-link> In <b>{{ cat.name }}</b> On <b>{{ post.date }}</b></p></div>
+          <div><p>Posted By <router-link :to="{name: 'user', params: {id: author.id}}" tag="a"><b>{{ author.name }}</b></router-link> In <router-link :to="{name: 'category', params: {id: cat.id}}" tag="a">
+            <b>{{ cat.name }}</b></router-link> On <b>{{ post.date }}</b></p>
+          </div>
           <p v-html="post.content.rendered"></p>
         </article>		
 			</div>

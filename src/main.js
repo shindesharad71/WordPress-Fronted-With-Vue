@@ -7,6 +7,7 @@ import Posts from './components/Posts.vue'
 import Post from './components/Post.vue'
 import Pages from './components/Pages.vue'
 import User from './components/User.vue'
+import Category from './components/Category.vue'
 
 Vue.use(VueRouter);
 
@@ -18,7 +19,8 @@ const router = new VueRouter({
         { path: '/posts', component: Posts },
         { path: '/post/:id', name: 'post', component: Post },
         { path: '/pages/:id', name: 'pages', component: Pages },
-        { path: '/user/:id', name: 'user', component: User }
+        { path: '/user/:id', name: 'user', component: User },
+        { path: '/category/:id', name: 'category', component: Category }
     ]
 });
 
