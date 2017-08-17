@@ -34,6 +34,7 @@ a, a:hover {
 }
 
 .bottom {
+  margin-top: 120px;
   margin-bottom: 40px;
 }
 
