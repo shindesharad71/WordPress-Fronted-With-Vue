@@ -7,6 +7,9 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <li>
+        <router-link active-class="active" class="nav-link" tag="a" to="/posts">Blog</router-link>
+      </li>
       <li class="nav-item" v-for="item in pages">
         <router-link :to="{name: 'pages', params: {id: item.id}}" active-class="active" class="nav-link" tag="a">{{ item.title.rendered }}</router-link>
       </li>

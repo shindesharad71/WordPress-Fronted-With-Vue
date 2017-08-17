@@ -10,7 +10,7 @@
         <article>
           <img :src="imgData.guid.rendered" class="img-fluid post-image" :alt="post.title.rendered">
           <h1 v-html="post.title.rendered"></h1>
-          <p>Posted By <b>{{ author.name }}</b> In <b>{{ cat.name }}</b> On <b>{{ post.date }}</b></p>
+          <p>Posted By <router-link :to="{name: 'user', params: {id: author.id}}" active-class="active" class="nav-link" tag="a"><b>{{ author.name }}</b></router-link> In <b>{{ cat.name }}</b> On <b>{{ post.date }}</b></p>
           <p v-html="post.content.rendered"></p>
         </article>		
 			</div>
