@@ -8,7 +8,7 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item" v-for="item in pages">
-        <router-link :to="{name: 'pages', params: {id: item.id}}" active-class="active" class="nav-link" tag="a">{{ item.title.rendered }}</router-link>
+        <router-link @click="changePage" :to="{name: 'pages', params: {id: item.id}}" active-class="active" class="nav-link" tag="a">{{ item.title.rendered }}</router-link>
       </li>
     </ul>
   </div>
@@ -33,10 +33,21 @@ export default {
 		.catch((error) => {
 			console.log(error);
 		});
+  },
+  computed: {
+    changePage() {
+      axios.get('http://sharadshinde.in/client/wp-json/wp/v2/pages/')
+      .then((response) => {
+        this.pages = response.data;
+        this.loading = false;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    }
   }
 }
 </script>
-
 
 <style scoped>
 nav {

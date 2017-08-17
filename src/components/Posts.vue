@@ -13,7 +13,7 @@
 						<div class="card-body">
 							<h4 class="card-title">{{ post.title.rendered }}</h4>
 							<p class="card-text" v-html="post.excerpt.rendered"></p>
-							<p class="card-text"><small class="text-muted">{{ post.date }}</small></p>
+							<p class="card-text"><small class="text-muted">Posted on {{ post.date }}</small></p>
 						</div>
 					</router-link>
 				</div>
