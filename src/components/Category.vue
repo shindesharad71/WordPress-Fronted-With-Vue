@@ -32,8 +32,7 @@ export default {
     return {
       loading: true,
       cat: [],
-      posts: [],
-      comments: []
+      posts: []
     }
   },
   created() {

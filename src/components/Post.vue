@@ -14,8 +14,15 @@
             <b>{{ cat.name }}</b></router-link> On <b>{{ post.date }}</b></p>
           </div>
           <p v-html="post.content.rendered"></p>
+          <hr>
           <div class="container">
-            <p for="comment in comments"></p>
+            <h3>Comments</h3><br>
+            <template v-for="comment in comments">
+              <blockquote class="alert alert-info blockquote">
+                <p class="mb-0" v-html="comment.content.rendered"></p>
+                <footer class="blockquote-footer" v-html="comment.author_name"></footer>
+              </blockquote>
+            </template>
           </div>
         </article>		
 			</div>
@@ -30,10 +37,7 @@ export default {
   data () {
 		return {
 			loading: true,
-      post: [],
-      author: [],
-      imgData: [],
-      cat: []
+      post: [], author: [], imgData: [], cat: [], comments: []
 		}
 	},
 	created() {
@@ -67,6 +71,15 @@ export default {
         console.log(error);
       });
       // Category End
+      // Show Comments For Post
+      axios.get('http://sharadshinde.in/client/wp-json/wp/v2/comments?post='+this.post.id)
+      .then((response) => {
+        this.comments = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      // End Show Comments For Post
       this.loading = false;
 		})
 		.catch((error) => {
