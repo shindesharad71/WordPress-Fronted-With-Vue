@@ -1,60 +1,47 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <h1>{{ msg }}</h1>
-    <h2>Essential Links</h2>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Forum</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Gitter Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Twitter</a></li>
-    </ul>
-    <h2>Ecosystem</h2>
-    <ul>
-      <li><a href="http://router.vuejs.org/" target="_blank">vue-router</a></li>
-      <li><a href="http://vuex.vuejs.org/" target="_blank">vuex</a></li>
-      <li><a href="http://vue-loader.vuejs.org/" target="_blank">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank">awesome-vue</a></li>
-    </ul>
+  <div>
+    <app-nav></app-nav>
+    <div class="container">
+      <transition name="fade">
+        <router-view class="bottom"></router-view>
+      </transition>
+    </div>
+    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
+import Nav from './components/Nav.vue'
+import Footer from './components/Footer.vue'
+
 export default {
-  name: 'app',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      
     }
+  },
+  components: {
+    'app-nav': Nav,
+    'app-footer': Footer
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+a, a:hover {
+  text-decoration: none;
+  color: #000;
 }
 
-h1, h2 {
-  font-weight: normal;
+.bottom {
+  margin-bottom: 40px;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
 }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0
 }
 </style>
