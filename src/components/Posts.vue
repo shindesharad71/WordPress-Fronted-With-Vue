@@ -7,11 +7,10 @@
 		</div>
 		<div class="container">
 			<div class="row">
-				<div class="card border-dark mb-3 col-md-5 mr-auto" v-for="post in posts">
+				<div class="card border-dark mb-3 col-md-5 mr-auto" key="something" v-for="post in posts">
 					<router-link tag="a" :to="{ name: 'post', params: { id: post.id }}">
-						<img class="card-img-top" src="#" :alt="post.title.rendered">
+						<!--<img class="card-img-top" :src="post._links['wp:featuredmedia'][0].href" :alt="post.title.rendered">-->
 						<div class="card-body">
-							<p>{{ post._links['wp:featuredmedia'][0].href }}</p>
 							<h4 class="card-title">{{ post.title.rendered }}</h4>
 							<p class="card-text" v-html="post.excerpt.rendered"></p>
 							<p class="card-text"><small class="text-muted">Posted on {{ post.date }}</small></p>
@@ -38,21 +37,6 @@ export default {
 		axios.get('http://sharadshinde.in/client/wp-json/wp/v2/posts')
 		.then((response) => {
 			this.posts = response.data;
-			// Load Post Image
-			for(var post in this.posts) {
-				console.log(post._links['wp:featuredmedia'][0].href);
-				/*
-				axios.get(post._links['wp:featuredmedia'][0].href)
-				.then((response) => {
-					this.imgData = response.data;
-					console.log(this.imgData);
-				})
-				.catch((error) => {
-					console.log(error);
-				});
-				*/
-			}
-			// Load Post Image Ends
 			this.loading = false;
 		})
 		.catch((error) => {
