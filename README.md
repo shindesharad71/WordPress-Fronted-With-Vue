@@ -3,10 +3,11 @@
 > A Vue.js project
 
 
-## Features
+## To Do
 
-- [x] Checked
-- [ ] Not Checked
+- [x] Create single page js app with your favourite js framework
+- [x] A Blog should have one entry point in menu and others should be pages
+- [x] On selecting the blog, we should be able to navigate blog posts with pagination
 
 ## Build Setup
 
