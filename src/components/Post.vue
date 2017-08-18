@@ -18,10 +18,13 @@
           <div class="container">
             <h3>Comments</h3><br>
             <template v-for="comment in comments">
-              <blockquote class="alert alert-info blockquote">
+              <blockquote class="alert alert-success blockquote">
                 <p class="mb-0" v-html="comment.content.rendered"></p>
                 <footer class="blockquote-footer" v-html="comment.author_name"></footer>
               </blockquote>
+            </template>
+            <template v-if="comments.length <= 0">
+              <p class="alert alert-info">No Comments Available On This Post!</p>
             </template>
           </div>
         </article>		
@@ -36,7 +39,8 @@ import axios from 'axios'
 export default {
   data () {
 		return {
-			loading: true,
+      loading: true,
+      noComment: false,
       post: [], author: [], imgData: [], cat: [], comments: []
 		}
 	},
