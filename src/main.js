@@ -8,6 +8,7 @@ import Post from './components/Post.vue'
 import Pages from './components/Pages.vue'
 import User from './components/User.vue'
 import Category from './components/Category.vue'
+import Tag from './components/Tag.vue'
 
 Vue.use(VueRouter);
 
@@ -20,7 +21,8 @@ const router = new VueRouter({
         { path: '/post/:id', name: 'post', component: Post },
         { path: '/pages/:id', name: 'pages', component: Pages },
         { path: '/user/:id', name: 'user', component: User },
-        { path: '/category/:id', name: 'category', component: Category }
+        { path: '/category/:id', name: 'category', component: Category },
+        { path: '/tag/:id', name: 'tag', component: Tag }
     ]
 });
 
