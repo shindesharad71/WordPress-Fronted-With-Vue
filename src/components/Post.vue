@@ -17,7 +17,15 @@
             <p v-html="post.content.rendered"></p>
             <hr>
             <div class="container">
-              <h3>Comments</h3><br>
+              <h3>Add Comments</h3><br>
+              <!-- Comment form -->
+              <form>
+                <div class="form-group">
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="comment" v-model="comment"></textarea>
+                </div>
+                <button @click.prevent="addComment" class="btn btn-primary">Submit</button>
+              </form><br>
+               <!-- Comment form end-->
               <template v-for="comment in comments">
                 <blockquote class="alert alert-success blockquote">
                   <p class="mb-0" v-html="comment.content.rendered"></p>
@@ -68,6 +76,9 @@ export default {
 		return {
       loading: true,
       noComment: false,
+      username: '',
+      password: '',
+      comment: '',
       post: [], author: [], imgData: [], cat: [], comments: [], tagData: []
 		}
 	},
@@ -125,6 +136,23 @@ export default {
 		.catch((error) => {
 			console.log(error);
     });
+  },
+  methods: {
+    addComment() {
+      // Add Comment
+       axios.post('http://sharadshinde.in/client/wp-json/wp/v2/comments',{
+         content: this.comment,
+         post: this.post.id
+       })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      this.comment = '';
+      // End Add Comment
+    }
   }
 }
 </script>

@@ -11,7 +11,7 @@ A Frontend For WordPress Made with Vue JS & WordPress REST API.
 
 ## To Do & Feature
 
-- [x] Single page js app with *Vue js* framework.
+- [x] Single page js app with **Vue js** framework.
 - [x] A Blog should have one entry point in menu and others should be pages.
 - [x] On selecting the blog, we should be able to navigate blog posts with pagination.
 - [x] You must use wp-rest-api and custom field should be available in rest api for posts.
