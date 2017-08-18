@@ -2,7 +2,7 @@
 
 A Frontend For WordPress Made with Vue JS & WordPress REST API.
 
-## To Do
+## To Do & Feature
 
 - [x] Create single page js app with your favourite js framework.
 - [x] A Blog should have one entry point in menu and others should be pages.
