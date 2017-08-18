@@ -44,7 +44,11 @@
             <div class="card">
               <div class="card-header">Tags</div>
                 <div class="card-body">
-                  <p v-for="(tag, index) in post.tags">{{ post.tags[index] }}</p>
+                  <div v-for="tag in tagData">
+                    <router-link :to="{name: 'tag', params: {id: tag.id}}" tag="a">
+                      <span class="badge badge-primary">{{ tag.name }}</span>
+                    </router-link>
+                  </div>
                 </div>
             </div>
           </div>		
@@ -61,7 +65,7 @@ export default {
 		return {
       loading: true,
       noComment: false,
-      post: [], author: [], imgData: [], cat: [], comments: []
+      post: [], author: [], imgData: [], cat: [], comments: [], tagData: []
 		}
 	},
 	created() {
@@ -104,6 +108,15 @@ export default {
         console.log(error);
       });
       // End Show Comments For Post
+      // Tags Info
+       axios.get('http://sharadshinde.in/client/wp-json/wp/v2/tags?post='+this.post.id)
+      .then((response) => {
+        this.tagData = response.data;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      // End Tags Info
       this.loading = false;
 		})
 		.catch((error) => {
