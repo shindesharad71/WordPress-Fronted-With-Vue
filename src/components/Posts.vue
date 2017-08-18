@@ -9,7 +9,7 @@
 			<div class="row">
 				<div class="card border-dark mb-3 col-md-5 mr-auto" v-for="post in posts">
 					<router-link tag="a" :to="{ name: 'post', params: { id: post.id }}">
-						<!--<img class="card-img-top" src="#" :alt="post.title.rendered">-->
+						<!--<img class="card-img-top" :src="#" :alt="post.title.rendered">-->
 						<div class="card-body">
 							<h4 class="card-title">{{ post.title.rendered }}</h4>
 							<p class="card-text" v-html="post.excerpt.rendered"></p>
@@ -29,8 +29,7 @@ export default {
   data () {
 		return {
 			loading: true,
-			posts: [],
-			imgData: []
+			posts: []
 		}
 	},
 	created() {
@@ -42,7 +41,7 @@ export default {
 		.catch((error) => {
 			console.log(error);
 		});
-  }
+  	}
 }
 </script>
 
