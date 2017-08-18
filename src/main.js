@@ -13,10 +13,11 @@ import Tag from './components/Tag.vue'
 Vue.use(VueRouter);
 
 const router = new VueRouter({
-    mode: 'history',
+    mode: 'hash',
     base: '/', // Routing Main Entry URL
     routes: [
         { path: '/', component: Posts },
+        { path: '*', redirect: '/' },
         { path: '/posts', component: Posts },
         { path: '/post/:id', name: 'post', component: Post },
         { path: '/pages/:id', name: 'pages', component: Pages },

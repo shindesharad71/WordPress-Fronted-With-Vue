@@ -46,9 +46,12 @@
                 <div class="card-body">
                   <div v-for="tag in tagData">
                     <router-link :to="{name: 'tag', params: {id: tag.id}}" tag="a">
-                      <span class="badge badge-primary">{{ tag.name }}</span>
+                      <h6><span class="badge badge-primary">{{ tag.name }}</span></h6>
                     </router-link>
                   </div>
+                  <template v-if="tagData.length <= 0">
+                      <p>No tags available for this post.</p>
+                  </template>
                 </div>
             </div>
           </div>		

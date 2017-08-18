@@ -1,6 +1,6 @@
 <template>
   <footer>
-      <div class="text-center">By Sharad Shinde 2017</div>
+      <div class="text-center"><b></></b> By Sharad Shinde 2017</div>
     </footer>
 </template>
 
