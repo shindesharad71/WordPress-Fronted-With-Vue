@@ -6,28 +6,48 @@
 			</div>
 		</div>
 		<div class="container-fluid">
-			<div class="row">  
+			<div class="row">
+        <div class="col-md-9">  
         <article>
-          <img :src="imgData.guid.rendered" class="img-fluid post-image" :alt="post.title.rendered">
-          <h1 v-html="post.title.rendered"></h1>
-          <div><p>Posted By <router-link :to="{name: 'user', params: {id: author.id}}" tag="a"><b>{{ author.name }}</b></router-link> In <router-link :to="{name: 'category', params: {id: cat.id}}" tag="a">
-            <b>{{ cat.name }}</b></router-link> On <b>{{ post.date }}</b></p>
+            <img :src="imgData.guid.rendered" class="img-fluid post-image" :alt="post.title.rendered">
+            <h1 v-html="post.title.rendered"></h1>
+            <div><p>Posted By <router-link :to="{name: 'user', params: {id: author.id}}" tag="a"><b>{{ author.name }}</b></router-link> In <router-link :to="{name: 'category', params: {id: cat.id}}" tag="a">
+              <b>{{ cat.name }}</b></router-link> On <b>{{ post.date }}</b></p>
+            </div>
+            <p v-html="post.content.rendered"></p>
+            <hr>
+            <div class="container">
+              <h3>Comments</h3><br>
+              <template v-for="comment in comments">
+                <blockquote class="alert alert-success blockquote">
+                  <p class="mb-0" v-html="comment.content.rendered"></p>
+                  <footer class="blockquote-footer" v-html="comment.author_name"></footer>
+                </blockquote>
+              </template>
+              <template v-if="comments.length <= 0">
+                <p class="alert alert-info">No Comments Available On This Post!</p>
+              </template>
+            </div>
+            </article>
           </div>
-          <p v-html="post.content.rendered"></p>
-          <hr>
-          <div class="container">
-            <h3>Comments</h3><br>
-            <template v-for="comment in comments">
-              <blockquote class="alert alert-success blockquote">
-                <p class="mb-0" v-html="comment.content.rendered"></p>
-                <footer class="blockquote-footer" v-html="comment.author_name"></footer>
-              </blockquote>
-            </template>
-            <template v-if="comments.length <= 0">
-              <p class="alert alert-info">No Comments Available On This Post!</p>
-            </template>
-          </div>
-        </article>		
+          <div class="col-md-3">
+            <!-- For Author -->
+            <div class="card bg-light mb-3">
+              <div class="card-header">About Author</div>
+                <div class="card-body">
+                  <img :src="author.avatar_urls[48]" class="img-fluid">
+                  <h4 class="card-title">{{ author.name }}</h4>
+                  <p class="card-text">{{ author.description }}</p>
+                </div>
+            </div><br>
+            <!-- For Tags -->
+            <div class="card">
+              <div class="card-header">Tags</div>
+                <div class="card-body">
+                  <p v-for="(tag, index) in post.tags">{{ post.tags[index] }}</p>
+                </div>
+            </div>
+          </div>		
 			</div>
 		</div>
 	</div>
