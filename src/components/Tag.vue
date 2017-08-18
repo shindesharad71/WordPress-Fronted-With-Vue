@@ -6,8 +6,8 @@
         </div>
 	</div>
     <div class="container">
-        <h1>{{ cat.name }} <span class="badge badge-primary">{{ cat.count }} Posts</span></h1><br>
-        <h3>Posts Having <u>{{ cat.name }}</u> Category</h3><br>
+        <h1>{{ tag.name }} <span class="badge badge-primary">{{ tag.count }} Posts</span></h1><br>
+        <h3>Posts Having <u>{{ tag.name }}</u> Tag</h3><br>
         <div class="row">
             <div class="card border-dark mb-3 col-md-5 mr-auto" v-for="post in posts">
                 <router-link tag="a" :to="{ name: 'post', params: { id: post.id }}">
@@ -31,16 +31,16 @@ export default {
   data () {
     return {
       loading: true,
-      cat: [],
+      tag: [],
       posts: []
     }
   },
   created() {
-		axios.get('http://sharadshinde.in/client/wp-json/wp/v2/categories/'+this.$route.params.id)
+		axios.get('http://sharadshinde.in/client/wp-json/wp/v2/tags/'+this.$route.params.id)
 		.then((response) => {
-            this.cat = response.data;
+            this.tag = response.data;
             // Get Posts By Category
-            axios.get('http://sharadshinde.in/client/wp-json/wp/v2/posts?categories='+this.$route.params.id)
+            axios.get('http://sharadshinde.in/client/wp-json/wp/v2/posts?tags='+this.$route.params.id)
             .then((response) => {
                 this.posts = response.data;
             })
