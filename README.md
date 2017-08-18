@@ -2,6 +2,10 @@
 
 A Frontend For WordPress Made with Vue JS & WordPress REST API.
 
+## Demo
+
+![Demo](https://github.com/shindesharad71/WordPress-Fronted-With-Vue/blob/master/demo.gif?raw=true "Demo")
+
 ## To Do & Feature
 
 - [x] Create single page js app with your favourite js framework.
