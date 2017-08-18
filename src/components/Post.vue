@@ -12,7 +12,7 @@
             <img :src="imgData.guid.rendered" class="img-fluid post-image" :alt="post.title.rendered">
             <h1 v-html="post.title.rendered"></h1>
             <div><p>Posted By <router-link :to="{name: 'user', params: {id: author.id}}" tag="a"><b>{{ author.name }}</b></router-link> In <router-link :to="{name: 'category', params: {id: cat.id}}" tag="a">
-              <b>{{ cat.name }}</b></router-link> On <b>{{ post.date }}</b></p>
+              <b>{{ cat.name }}</b></router-link> On <b>{{ post.date }}</b> Having <u><b>{{ comments.length }}</b></u> Comments</p>
             </div>
             <p v-html="post.content.rendered"></p>
             <hr>
@@ -166,10 +166,5 @@ export default {
 
 a, a:hover {
   text-decoration: underline;
-}
-
-.post-image {
-  height: 300px;
-  width: 100%;
 }
 </style>
