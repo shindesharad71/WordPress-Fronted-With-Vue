@@ -23,3 +23,7 @@ npm run dev
 # build for production with minification
 npm run build
 ```
+
+## Extra WordPess Plugins Need To Install
+
+* Better REST API Featured Images

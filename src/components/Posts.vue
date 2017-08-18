@@ -9,7 +9,7 @@
 			<div class="row">
 				<div class="card border-dark mb-3 col-md-5 mr-auto" key="something" v-for="post in posts">
 					<router-link tag="a" :to="{ name: 'post', params: { id: post.id }}">
-						<!--<img class="card-img-top" :src="post._links['wp:featuredmedia'][0].href" :alt="post.title.rendered">-->
+						<img class="card-img-top" :src="post.better_featured_image.source_url" :alt="post.title.rendered">
 						<div class="card-body">
 							<h4 class="card-title">{{ post.title.rendered }}</h4>
 							<p class="card-text" v-html="post.excerpt.rendered"></p>
