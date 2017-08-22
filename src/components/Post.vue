@@ -21,6 +21,12 @@
               <!-- Comment form -->
               <form>
                 <div class="form-group">
+                  <input type="text" class="form-control" id="exampleFormControlTextarea1"  placeholder="Name" v-model="name">
+                </div>
+                <div class="form-group">
+                  <input type="email" class="form-control" id="exampleFormControlTextarea1"  placeholder="email" v-model="email">
+                </div>
+                <div class="form-group">
                   <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="comment" v-model="comment"></textarea>
                 </div>
                 <button @click.prevent="addComment" class="btn btn-primary">Submit</button>
@@ -79,6 +85,8 @@ export default {
       username: '',
       password: '',
       comment: '',
+      name: '',
+      email: '',
       post: [], author: [], imgData: [], cat: [], comments: [], tagData: []
 		}
 	},
@@ -142,7 +150,9 @@ export default {
       // Add Comment
        axios.post('http://sharadshinde.in/client/wp-json/wp/v2/comments',{
          content: this.comment,
-         post: this.post.id
+         post: this.post.id,
+         author: this.name,
+         author_email: this.email
        })
       .then((response) => {
         console.log(response.data);
@@ -151,6 +161,8 @@ export default {
         console.log(error);
       });
       this.comment = '';
+      this.name = '';
+      this.email = '';
       // End Add Comment
     }
   }
