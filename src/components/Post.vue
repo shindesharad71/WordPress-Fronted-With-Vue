@@ -21,15 +21,15 @@
               <!-- Comment form -->
               <form>
                 <div class="form-group">
-                  <input type="text" class="form-control" id="exampleFormControlTextarea1"  placeholder="Name" v-model="name">
+                  <input type="text" required class="form-control" id="exampleFormControlTextarea1"  placeholder="Name" v-model="name">
                 </div>
                 <div class="form-group">
-                  <input type="email" class="form-control" id="exampleFormControlTextarea1"  placeholder="email" v-model="email">
+                  <input type="email" required class="form-control" id="exampleFormControlTextarea1"  placeholder="email" v-model="email">
                 </div>
                 <div class="form-group">
-                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="comment" v-model="comment"></textarea>
+                  <textarea class="form-control" required id="exampleFormControlTextarea1" rows="3" placeholder="comment" v-model="comment"></textarea>
                 </div>
-                <button @click.prevent="addComment" class="btn btn-primary">Submit</button>
+                <button @click.prevent="addComment" :disabled="comment == '' | name == '' | email == ''" class="btn btn-primary">Submit</button>
               </form><br>
                <!-- Comment form end-->
               <template v-for="comment in comments">
@@ -148,14 +148,22 @@ export default {
   methods: {
     addComment() {
       // Add Comment
-       axios.post('http://sharadshinde.in/client/wp-json/wp/v2/comments',{
+       axios.post('http://sharadshinde.in/client/wp-json/wp/v2/comments', {
          content: this.comment,
          post: this.post.id,
-         author: this.name,
+         author_name: this.name,
          author_email: this.email
        })
       .then((response) => {
-        console.log(response.data);
+        // Show Comments For Post
+        axios.get('http://sharadshinde.in/client/wp-json/wp/v2/comments?post='+this.post.id)
+        .then((response) => {
+          this.comments = response.data;
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+        // End Show Comments For Post
       })
       .catch((error) => {
         console.log(error);

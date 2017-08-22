@@ -17,6 +17,7 @@ A Frontend For WordPress Made with Vue JS & WordPress REST API.
 - [x] You must use wp-rest-api and custom field should be available in rest api for posts.
 - [x] On single blog post, it should display author.
 - [x] Tags - category should be displayed and should be clickable and click it should display all page/posts with that category/tag.
+- [x] Add Commets On Posts.
 
 ## Build Setup
 
@@ -31,6 +32,13 @@ npm run dev
 npm run build
 ```
 
-## Extra WordPess Plugins Need To Install
+## Extra WordPess Customization
 
-* Better REST API Featured Images
+* Install Plugin - Better REST API Featured Images
+
+* anonymous comment by default is disabled with the 4.7 API. However, there is a filter, you can use: 
+Place it in themes sections under **functions.php**
+
+```php 
+add_filter( 'rest_allow_anonymous_comments', '__return_true' );
+```
