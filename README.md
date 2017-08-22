@@ -40,5 +40,6 @@ npm run build
 Place it in themes sections under **functions.php**
 
 ```php 
+// Enamble Rest API Commments
 add_filter( 'rest_allow_anonymous_comments', '__return_true' );
 ```
