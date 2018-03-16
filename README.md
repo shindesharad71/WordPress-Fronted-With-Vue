@@ -2,9 +2,6 @@
 
 A Frontend For WordPress Made with Vue JS & WordPress REST API.
 
-* WordPress Blog URL - http://sharadshinde.in/client
-* Frontend With Vue - http://sharadshinde.in/vue
-
 ## Demo
 
 ![Demo](https://github.com/shindesharad71/WordPress-Fronted-With-Vue/blob/master/demo.gif?raw=true "Demo")
